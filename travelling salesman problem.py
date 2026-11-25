@@ -10,21 +10,23 @@ graph = [
     [20, 25, 30, 0]
 ]
 
-start = 0
-vertices = [i for i in range(n) if i != start]
-
+vertices = [1, 2, 3]
 min_cost = float('inf')
 
 for p in permutations(vertices):
     cost = 0
-    k = start
+    k = 0
 
     for j in p:
         cost += graph[k][j]
         k = j
 
-    cost += graph[k][start]
+    cost += graph[k][0]
 
-    min_cost = min(min_cost, cost)
+    if cost < min_cost:
+        min_cost = cost
+        best_path = (0,) + p + (0,)
 
-print("Minimum travelling cost:", min_cost)
+print("Travelling Salesman Problem")
+print("Minimum Cost:", min_cost)
+print("Optimal Path:", best_path)
